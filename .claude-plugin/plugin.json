@@ -1,7 +1,9 @@
 {
   "name": "cross-verify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "개발자 참여형 교차 검증 에이전트 — 의사결정·설계·문서·구현 4축 통합",
   "author": { "name": "EP11240-김동영" },
-  "keywords": ["cross-verify", "review", "verification", "agent"]
+  "keywords": ["cross-verify", "review", "verification", "agent"],
+  "skills": "./skills/",
+  "agents": "./agents/"
 }
