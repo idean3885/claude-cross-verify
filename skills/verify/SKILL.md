@@ -13,8 +13,26 @@ trigger: ["교차 검증", "크로스 체크", "cross verify", "검증해줘", "
 
 ## 호출 방식
 
-- `/cross-verify:verify` 직접 호출
+- `/verify` 직접 호출
 - 트리거 키워드: "교차 검증", "크로스 체크", "cross verify"
+
+## 프로젝트 설정 연동
+
+`.claude/cross-verify.json`이 존재하면 프로젝트 맥락을 반영한다.
+
+```bash
+test -f .claude/cross-verify.json && echo "PROJECT_CONFIG" || echo "GENERIC"
+```
+
+**설정 파일이 있을 때:**
+1. `conventions` 경로의 문서를 읽어 컨벤션 기준으로 검증
+2. `decisionLog` 위치를 참조하여 의사결정 근거 확인
+3. `focusAxes`에 지정된 축만 실행 (생략 시 전체)
+4. `customChecks`의 항목을 해당 축 검증에 추가
+
+**설정 파일이 없을 때:** 범용 4축 검증 실행 (기존 동작과 동일)
+
+> 설정 초기화: `/verify-setup` 실행
 
 ## 동작 흐름
 
