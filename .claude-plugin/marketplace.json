@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-cross-verify-plugin",
+  "description": "Developer-driven cross-verification agent",
+  "owner": { "name": "EP11240-김동영" },
+  "plugins": [
+    {
+      "name": "cross-verify",
+      "description": "개발자 참여형 교차 검증 에이전트 — 의사결정·설계·문서·구현 4축 통합",
+      "version": "1.0.0",
+      "author": { "name": "EP11240-김동영" },
+      "source": "./",
+      "category": "productivity",
+      "tags": ["cross-verify", "review", "verification", "agent"]
+    }
+  ]
+}
