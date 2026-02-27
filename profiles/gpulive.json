@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "project": "gpulive",
+  "description": "GPU Live 백엔드 — 헥사고날 아키텍처 기반 미터링 시스템",
+  "conventions": [
+    ".pr-review-convention.md",
+    ".claude/CLAUDE.md",
+    ".claude/skills/implement/guides/"
+  ],
+  "designDocs": ".doc/",
+  "focusAxes": ["의사결정", "설계", "문서", "구현"],
+  "customChecks": {
+    "의사결정": [
+      "헥사고날 아키텍처 위배 시 명분이 있는가",
+      "PR 리뷰 제안을 맹신하지 않고 호출 흐름을 끝까지 추적했는가",
+      "소규모 팀(Two-Pizza Rule, ~8명 이하) 운영 기준: 체계적 구조의 유지보수 비용을 고려하여 성능 소폭 손해를 감수하더라도 가독성·유지보수 효율성을 우선하는가"
+    ],
+    "설계": [
+      "UseCase 포트가 WHAT(비즈니스 능력)만 표현하는가 (WHO/HOW는 인프라 계층)",
+      "동일 행위는 메서드 오버로드로 표현하는가 (트리거 방식 분리 금지)",
+      "Repository가 CUD 단일 도메인 원칙을 지키는가"
+    ],
+    "문서": [
+      "소괄호 보충 설명 금지: 전치 수식어 사용 (예: '기간 지정 집계')",
+      "서사-선언 분리: 테이블=WHAT, 블록인용=WHY, 코드=HOW",
+      "문서 수정 후 위키 동기화 대상인지 확인",
+      "A4 PDF 개행: 한글 ~40자 내외 문장 단위 개행"
+    ],
+    "구현": [
+      "@Transactional은 public 메서드에만 (private self-invocation 불가)",
+      "var 사용 권장, 인덴트 2 spaces",
+      "HTTP Interface 권장 (Feign은 레거시)",
+      "Metering 용어 통일: '재집계' → '기간 지정 집계', 'manual'은 인프라 전용"
+    ]
+  }
+}

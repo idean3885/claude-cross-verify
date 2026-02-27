@@ -18,21 +18,35 @@ trigger: ["교차 검증", "크로스 체크", "cross verify", "검증해줘", "
 
 ## 프로젝트 설정 연동
 
-`.claude/cross-verify.json`이 존재하면 프로젝트 맥락을 반영한다.
+플러그인 레포의 `profiles/` 디렉토리에서 프로젝트별 프로필을 자동 매칭한다.
+프로필은 플러그인 레포에 영구 보존되므로 워크트리 전환이나 데스크탑 초기화에도 유실되지 않는다.
+
+### 프로필 탐색 절차
 
 ```bash
-test -f .claude/cross-verify.json && echo "PROJECT_CONFIG" || echo "GENERIC"
+# 1. 플러그인 캐시에서 프로필 목록 탐색
+ls ~/.claude/plugins/cache/claude-cross-verify-plugin/cross-verify/*/profiles/*.json 2>/dev/null
 ```
 
-**설정 파일이 있을 때:**
+1. 프로필 파일을 순회하며 각 프로필의 `project` 필드를 읽는다
+2. 현재 프로젝트의 CLAUDE.md 또는 디렉토리명에서 프로젝트 식별자를 추출한다
+3. `project` 필드와 매칭되는 프로필을 자동 선택한다
+4. 매칭 실패 시 사용자에게 프로필 목록을 제시하고 선택을 요청한다
+5. 프로필이 하나도 없으면 범용 4축 검증을 실행한다 (기존 동작)
+
+### 프로필 적용
+
+프로필이 매칭되면:
 1. `conventions` 경로의 문서를 읽어 컨벤션 기준으로 검증
-2. `decisionLog` 위치를 참조하여 의사결정 근거 확인
+2. `designDocs` 위치를 참조하여 설계 문서 확인
 3. `focusAxes`에 지정된 축만 실행 (생략 시 전체)
 4. `customChecks`의 항목을 해당 축 검증에 추가
 
-**설정 파일이 없을 때:** 범용 4축 검증 실행 (기존 동작과 동일)
+### 하위 호환
 
-> 설정 초기화: `/verify-setup` 실행
+`.claude/cross-verify.json`이 프로젝트에 존재하면 프로필보다 우선한다 (로컬 오버라이드).
+
+> 프로필 관리: 플러그인 소스 레포의 `profiles/` 디렉토리에서 직접 편집
 
 ## 동작 흐름
 
