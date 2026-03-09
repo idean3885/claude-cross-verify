@@ -30,7 +30,10 @@
       "@Transactional은 public 메서드에만 (private self-invocation 불가)",
       "var 사용 권장, 인덴트 2 spaces",
       "HTTP Interface 권장 (Feign은 레거시)",
-      "Metering 용어 통일: '재집계' → '기간 지정 집계', 'manual'은 인프라 전용"
+      "Metering 용어 통일: '재집계' → '기간 지정 집계', 'manual'은 인프라 전용",
+      "복합 PK(@IdClass) 사용 시 GenerationType이 Hibernate 제약(SEQUENCE 필수)을 충족하는가",
+      "TABLE 시퀀스 초기값이 PooledOptimizer 규칙(next_val = allocationSize)을 준수하는가",
+      "Flyway DDL이 배포 환경 제약(DB 외부 생성)을 반영하여 charset·collation을 미명시하는가"
     ]
   }
 }
