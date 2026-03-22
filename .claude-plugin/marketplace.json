@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "claude-cross-verify",
-  "description": "Developer-driven cross-verification agent",
+  "description": "개발자 주도의 교차 검증 에이전트",
   "owner": { "name": "idean3885" },
   "repository": {
     "url": "https://github.com/idean3885/claude-cross-verify.git"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "cross-verify",
-      "description": "Developer-driven cross-verification agent — 4-axis verification for decisions, design, documentation, and implementation",
+      "description": "개발자 주도의 교차 검증 에이전트 — 의사결정·설계·문서·구현 4축 통합 검증",
       "version": "1.0.0",
       "author": { "name": "idean3885" },
       "source": "./",
