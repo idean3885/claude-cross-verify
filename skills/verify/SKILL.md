@@ -19,13 +19,13 @@ trigger: ["교차 검증", "크로스 체크", "cross verify", "검증해줘", "
 ## 프로젝트 설정 연동
 
 플러그인 레포의 `profiles/` 디렉토리에서 프로젝트별 프로필을 자동 매칭한다.
-프로필은 플러그인 레포에 영구 보존되므로 워크트리 전환이나 데스크탑 초기화에도 유실되지 않는다.
+프로필은 유저 스코프(`~/.claude/cross-verify/profiles/`)에 보관된다. 플러그인 업데이트와 독립적으로 유지된다.
 
 ### 프로필 탐색 절차
 
 ```bash
-# 1. 플러그인 캐시에서 프로필 목록 탐색
-ls ~/.claude/plugins/cache/claude-cross-verify-plugin/cross-verify/*/profiles/*.json 2>/dev/null
+# 1. 유저 스코프에서 프로필 목록 탐색
+ls ~/.claude/cross-verify/profiles/*.json 2>/dev/null
 ```
 
 1. 프로필 파일을 순회하며 각 프로필의 `project` 필드를 읽는다
@@ -42,11 +42,7 @@ ls ~/.claude/plugins/cache/claude-cross-verify-plugin/cross-verify/*/profiles/*.
 3. `focusAxes`에 지정된 축만 실행 (생략 시 전체)
 4. `customChecks`의 항목을 해당 축 검증에 추가
 
-### 하위 호환
-
-`.claude/cross-verify.json`이 프로젝트에 존재하면 프로필보다 우선한다 (로컬 오버라이드).
-
-> 프로필 관리: 플러그인 소스 레포의 `profiles/` 디렉토리에서 직접 편집
+> 프로필 관리: `~/.claude/cross-verify/profiles/`에서 직접 편집
 
 ## 동작 흐름
 
@@ -228,18 +224,6 @@ ls ~/.claude/plugins/cache/claude-cross-verify-plugin/cross-verify/*/profiles/*.
 {전체 평가 및 우선 확인 권고 사항}
 ```
 
-### Phase 4: 대화형 심화
-
-결과 제시 후, 개발자가 특정 축을 더 파고들 수 있도록 안내한다:
-
-```
-특정 축을 더 깊이 살펴볼까요?
-- "의사결정 더 보기" — 대안 분석 심화
-- "설계 더 보기" — 엣지 케이스 시뮬레이션
-- "문서 더 보기" — 독자별 이해도 검토
-- "구현 더 보기" — 코드-설계 상세 대조
-```
-
 ---
 
 ## 핵심 원칙
@@ -266,20 +250,3 @@ ls ~/.claude/plugins/cache/claude-cross-verify-plugin/cross-verify/*/profiles/*.
 | code-review | 코드 품질 리뷰 | 보완 — 코드 너머의 의사결정·문서를 포함 |
 | SAST/DAST | 구현 수준 보안 취약점 탐지 | 보완 — 도구가 잡을 수 없는 보안 설계 판단을 다룸 |
 
----
-
-## 부분 검증
-
-4축 전체가 아닌 특정 축만 검증할 수 있다.
-
-```
-"의사결정만 검증해줘" → 축 1만 실행
-"설계 검증" → 축 2만 실행
-"문서 품질 확인" → 축 3만 실행
-"구현 검증" → 축 4만 실행
-```
-
-대상이 특정 축에만 해당하는 경우 자동으로 관련 축만 실행한다:
-- 순수 코드 변경 → 축 2(설계) + 축 4(구현) 우선
-- 문서만 변경 → 축 3(문서) 우선
-- 설계 문서 → 축 1(의사결정) + 축 2(설계) 우선
