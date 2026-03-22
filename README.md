@@ -105,8 +105,4 @@ claude-cross-verify/
         └── SKILL.md           # 4축 검증 스킬
 ```
 
----
 
-## 배경
-
-블로그 포스팅 준비 중.
