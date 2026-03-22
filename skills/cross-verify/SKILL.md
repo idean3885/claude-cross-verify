@@ -1,7 +1,7 @@
 ---
-name: verify
+name: cross-verify
 description: 교차 검증 — 의사결정·설계·문서·구현 4축 통합 검증. 개발자가 호출하는 체크리스트.
-trigger: ["교차 검증", "크로스 체크", "cross verify", "검증해줘", "verify this"]
+trigger: ["교차 검증", "크로스 체크", "cross verify"]
 ---
 
 # 교차 검증 스킬
@@ -13,7 +13,7 @@ trigger: ["교차 검증", "크로스 체크", "cross verify", "검증해줘", "
 
 ## 호출 방식
 
-- `/verify` 직접 호출
+- `/cross-verify` 직접 호출
 - 트리거 키워드: "교차 검증", "크로스 체크", "cross verify"
 
 ## 프로젝트 설정 연동
