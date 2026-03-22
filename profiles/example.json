@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "project": "my-project",
-  "description": "Example profile — customize for your project",
+  "description": "예시 프로필 — 프로젝트에 맞게 커스터마이징하세요",
   "conventions": [
     ".claude/CLAUDE.md"
   ],
@@ -9,20 +9,20 @@
   "focusAxes": ["decision", "design", "documentation", "implementation"],
   "customChecks": {
     "decision": [
-      "Is there a documented rationale for this choice?",
-      "Were alternatives considered and trade-offs explicit?"
+      "이 선택에 대한 문서화된 근거가 있는가?",
+      "대안을 검토했으며 트레이드오프가 명시적인가?"
     ],
     "design": [
-      "Are edge cases and failure modes addressed?",
-      "Is the design consistent with existing conventions?"
+      "엣지 케이스와 실패 모드가 다뤄졌는가?",
+      "기존 컨벤션과 일관되는가?"
     ],
     "documentation": [
-      "Is the target audience clear?",
-      "Are terms used consistently?"
+      "대상 독자가 명확한가?",
+      "용어가 일관되게 사용되는가?"
     ],
     "implementation": [
-      "Does the code accurately reflect the design?",
-      "Are there unintended side effects?"
+      "코드가 설계를 정확히 반영하는가?",
+      "의도하지 않은 부수효과가 있는가?"
     ]
   }
 }
