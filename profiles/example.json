@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "project": "my-project",
-  "description": "예시 프로필 — 프로젝트에 맞게 커스터마이징하세요",
+  "description": "예시 프로필 - 프로젝트에 맞게 커스터마이징하세요",
   "conventions": [
     ".claude/CLAUDE.md"
   ],
